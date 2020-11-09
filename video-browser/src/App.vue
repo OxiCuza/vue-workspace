@@ -3,7 +3,7 @@
 		<h1>Hello World</h1>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quae eum, tenetur alias, minus iste id, veritatis placeat quidem nam odio. Voluptate pariatur mollitia tempora, molestiae veniam quam repellat quasi?</p>
 		<SearchBar @termChange="onTermChange"></SearchBar>
-		<VideoList></VideoList>
+		<VideoList :videos="videos"></VideoList>
 	</div>
 </template>
 
@@ -20,6 +20,11 @@ export default {
 		SearchBar,
 		VideoList
 	},
+	data() {
+		return {
+			videos: []
+		}
+	},
 	methods: {
 		onTermChange(searchTerm) {
 			axios.get('https://www.googleapis.com/youtube/v3/search', {
@@ -29,7 +34,9 @@ export default {
 				part: 'snippet',
 				q: searchTerm
 				}
-			}).then(response => console.log(response));
+			}).then(response => {
+				this.videos = response.data.items;
+			}).catch(err => console.log(err));
 		}
 	}
 }

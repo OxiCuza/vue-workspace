@@ -1,13 +1,13 @@
 <template>
     <div>
-        Video List
+        Video List {{videos.length}}
     </div>
 </template>
 
 <script>
 export default {
-    name: 'VideoList'
-
+    name: 'VideoList',
+    props: ['videos']
 }
 </script>
 
