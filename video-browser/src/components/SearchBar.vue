@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <input @input="onInput" type="text">
+    <div class="search-bar">
+        <input @input='onInput' type="text">
     </div>
 </template>
 

@@ -1,9 +1,14 @@
 <template>
-	<div>
-		<h1>Hello World</h1>
-		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur quae eum, tenetur alias, minus iste id, veritatis placeat quidem nam odio. Voluptate pariatur mollitia tempora, molestiae veniam quam repellat quasi?</p>
-		<SearchBar @termChange="onTermChange"></SearchBar>
-		<VideoList :videos="videos"></VideoList>
+	<div class="app">
+		<div class="left-content">
+			<SearchBar @termChange="onTermChange"></SearchBar>
+			<VideoDetail></VideoDetail>
+		</div>
+		<div class="right-content">
+			<div v-if="videos.length != 0">
+				<VideoList :videos="videos"></VideoList>	
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -11,6 +16,7 @@
 import axios from 'axios';
 import SearchBar from './components/SearchBar';
 import VideoList from './components/VideoList';
+import VideoDetail from './components/VideoDetail';
 
 const API_KEY = 'AIzaSyDB5LHNUC7It_8qK-l5cno38NdWAPEzjQE';
 
@@ -18,7 +24,8 @@ export default {
 	name: 'App',
 	components: {
 		SearchBar,
-		VideoList
+		VideoList,
+		VideoDetail
 	},
 	data() {
 		return {
