@@ -2,11 +2,11 @@
 	<div class="app">
 		<div class="left-content">
 			<SearchBar @termChange="onTermChange"></SearchBar>
-			<VideoDetail></VideoDetail>
+			<VideoDetail v-if="videoSelected != null" :video="videoSelected"></VideoDetail>
 		</div>
 		<div class="right-content">
 			<div v-if="videos.length != 0">
-				<VideoList :videos="videos"></VideoList>	
+				<VideoList :videos="videos" @videoSelect="onVideoSelect"></VideoList>	
 			</div>
 		</div>
 	</div>
@@ -29,7 +29,8 @@ export default {
 	},
 	data() {
 		return {
-			videos: []
+			videos: [],
+			videoSelected: null
 		}
 	},
 	methods: {
@@ -44,6 +45,9 @@ export default {
 			}).then(response => {
 				this.videos = response.data.items;
 			}).catch(err => console.log(err));
+		},
+		onVideoSelect(video) {
+			this.videoSelected = video;
 		}
 	}
 }

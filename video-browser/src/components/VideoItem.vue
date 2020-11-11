@@ -1,10 +1,10 @@
 <template>
-    <li>
+    <li @click="onVideoSelect">
         <div class="video-img">
             <img :src="imgURL" alt="Gambar 1">
         </div>
         <div class="video-desc">
-            <a href=""><h3>{{ titleVideo }}</h3></a>
+            <a href="#"><h3>{{ titleVideo }}</h3></a>
         </div>
     </li>
 </template>
@@ -19,6 +19,11 @@ export default {
         },
         titleVideo() {
             return this.video.snippet.title;
+        }
+    },
+    methods: {
+        onVideoSelect() {
+            this.$emit('videoSelect', this.video);
         }
     }
 
