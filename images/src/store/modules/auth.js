@@ -1,3 +1,5 @@
+import imgurAPI from '../../api/imgur';
+
 const state = {
     // is initialize value from token login API
     token: null
@@ -16,9 +18,19 @@ const mutations = {
 };
 
 const actions = {
+    login: () => {
+        imgurAPI.login();
+    },
     logout: ({
         commit /*commit reference to mutations module*/
     }) => {
         commit('setToken', null);
     }
 };
+
+export default {
+    state,
+    getters,
+    mutations,
+    actions
+}
