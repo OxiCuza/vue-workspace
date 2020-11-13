@@ -3,7 +3,7 @@ import imgurAPI from '../../api/imgur';
 
 const state = {
     // is initialize value from token login API
-    token: null
+    token: window.localStorage.getItem('imgur_token') //get value of token from localstorage
 };
 
 const getters = {
@@ -27,6 +27,8 @@ const actions = {
     }, hash) => {
         const resultQuery = qs.parse(hash.replace('#', ''));
         commit('setToken', resultQuery.access_token);
+        // Persisting token to localstorage
+        window.localStorage.setItem('imgur_token', resultQuery.access_token);
     },
     logout: ({
         commit /*commit reference to mutations module*/
