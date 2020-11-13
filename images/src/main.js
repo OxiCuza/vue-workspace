@@ -1,9 +1,24 @@
 import Vue from 'vue';
-import App from './App';
+import VueRouter from 'vue-router';
 import store from './store';
+import App from './App';
+import AuthHandler from './components/AuthHandler';
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [{
+        path: '/oauth2/callback',
+        component: AuthHandler
+    }]
+})
 
 new Vue({
     el: '#app',
+    /* same like router: router, */
+    router,
+    /* same like just store, */
     store: store,
     render: h => h(App)
 });

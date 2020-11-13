@@ -1,3 +1,4 @@
+import qs from "qs";
 import imgurAPI from '../../api/imgur';
 
 const state = {
@@ -20,6 +21,12 @@ const mutations = {
 const actions = {
     login: () => {
         imgurAPI.login();
+    },
+    finalizeLogin: ({
+        commit
+    }, hash) => {
+        const resultQuery = qs.parse(hash.replace('#', ''));
+        commit('setToken', resultQuery.access_token);
     },
     logout: ({
         commit /*commit reference to mutations module*/
