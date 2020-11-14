@@ -1,4 +1,7 @@
 import qs from "qs";
+import {
+    router
+} from '../../main';
 import imgurAPI from '../../api/imgur';
 
 const state = {
@@ -29,11 +32,13 @@ const actions = {
         commit('setToken', resultQuery.access_token);
         // Persisting token to localstorage
         window.localStorage.setItem('imgur_token', resultQuery.access_token);
+        router.push('/');
     },
     logout: ({
         commit /*commit reference to mutations module*/
     }) => {
         commit('setToken', null);
+        window.localStorage.removeItem('imgur_token');
     }
 };
 
