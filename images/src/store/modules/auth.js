@@ -22,21 +22,21 @@ const mutations = {
 };
 
 const actions = {
-    login: () => {
+    login() {
         imgurAPI.login();
     },
-    finalizeLogin: ({
+    finalizeLogin({
         commit
-    }, hash) => {
+    }, hash) {
         const resultQuery = qs.parse(hash.replace('#', ''));
         commit('setToken', resultQuery.access_token);
         // Persisting token to localstorage
         window.localStorage.setItem('imgur_token', resultQuery.access_token);
         router.push('/');
     },
-    logout: ({
+    logout({
         commit /*commit reference to mutations module*/
-    }) => {
+    }) {
         commit('setToken', null);
         window.localStorage.removeItem('imgur_token');
     }
