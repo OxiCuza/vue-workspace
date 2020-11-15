@@ -17,7 +17,9 @@ const mutations = {
 const actions = {
     async fetchImages({
         // rootState object is the whole state modules in vuex
-        rootState
+        rootState,
+        // this params reference to mutations modules
+        commit
     }) {
         // get value token from auth modules this is sintax es2015
         const {
@@ -30,7 +32,8 @@ const actions = {
         using promises sintax
         */
         const response = await imgurApi.fetchImages(token);
-        console.log(response.data);
+        // call the function setImages to edit value images state
+        commit('setImages', response.data.data);
     }
 };
 
