@@ -34,6 +34,12 @@ const actions = {
         const response = await imgurApi.fetchImages(token);
         // call the function setImages to edit value images state
         commit('setImages', response.data.data);
+    },
+    async uploadImages({
+        commit
+    }, images) {
+        console.log(commit);
+        console.log(images);
     }
 };
 

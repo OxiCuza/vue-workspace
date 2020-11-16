@@ -1,6 +1,6 @@
 <template>
     <div class="dropper"> 
-        <input type="file">
+        <input type="file" @change="uploadImages($event.target.files)" multiple accept="images/*">
         <span>
             Drop image here !
         </span>
@@ -8,8 +8,13 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
-    name: 'UploadForm'
+    name: 'UploadForm',
+    methods: {
+        ...mapActions(['uploadImages'])
+    }
 }
 </script>
 
