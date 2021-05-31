@@ -1,8 +1,15 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
     <Header></Header>
-    <QuestionBox></QuestionBox>
+
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col sm="6" offset="3">
+          <QuestionBox></QuestionBox>
+        </b-col>
+      </b-row>
+    </b-container>
+
   </div>
 </template>
 

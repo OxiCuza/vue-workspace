@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import {
-  BootstrapVue,
-  IconsPlugin
+  BootstrapVue
 } from 'bootstrap-vue'
 
 import 'bootstrap/dist/css/bootstrap.css'
